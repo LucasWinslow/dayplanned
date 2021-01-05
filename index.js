@@ -1,14 +1,11 @@
-function displayTime() {
- 
-  var time = moment().format('MMMM Do YYYY, h:mm:ss a')
-  $('#clock').html(time);
-  setTimeout(displayTime, 1000);
-}
-$(document).ready(function() {
-  displayTime();
-});
+
+// need to add a time with moment. Still working on this.
 
 // 8am
+// Here is a function that gets the conetent from the textarea and sends it to local storage. 
+// And the second one pulls from local storage when user clicks the load button. I had a few issus with 
+// getting it to load on refresh so I add this button to do it. Not the best way to do it as you have to click
+// each button for each textarea after refresh.
 function Save8() {
     var myContent = document.getElementById("8am").value;
     localStorage.setItem("myContent", myContent);
@@ -81,12 +78,4 @@ function Save3() {
     document.getElementById("3pm").value = myContent;
   };
 
-  var now = moment();
-
-$('time').each(function(i, e) {
-    var time = moment($(e).attr('datetime'));
-
-    if(now.diff(time, 'days') <= 1) {
-        $(e).html('<span>' + time.from(now) + '</span>');
-    }
-});
+ 
