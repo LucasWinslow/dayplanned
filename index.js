@@ -77,5 +77,34 @@ function Save3() {
     var myContent = localStorage.getItem("myContent");
     document.getElementById("3pm").value = myContent;
   };
+// The below was implemented from StackOverflow. 
+//  Link can be found here: https://stackoverflow.com/questions/59995703/trying-to-change-background-color-based-off-if-the-hour-is-in-the-past-current
+// Still working on getting moment to work. This currently does not work as moment is not working.
+  const rows = document.getElementsByClassName("form-control");
+let currentHour = parseInt(moment().format('H'));
+
+Array.from(rows).forEach(row => {
+  let
+    rowIdString = row.id,
+    rowHour;
+  if (rowIdString) {
+    rowHour = parseInt(rowIdString);
+  }
+  if (rowHour) {
+
+    if (currentHour === rowHour) {
+      setColor(row, "red");
+    } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+      setColor(row, "green");
+    } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+      setColor(row, "blue");
+    } 
+  }
+});
+
+function setColor(element, color) {
+  element.style.backgroundColor = color;
+}
+
 
  
